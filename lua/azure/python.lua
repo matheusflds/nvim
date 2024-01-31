@@ -1,0 +1,15 @@
+-- if exists("$VIRTUAL_ENV")
+--     let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+-- else
+--     let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+-- endif
+-- local virtual_env = os.getenv("VIRTUAL_ENV")
+-- if virtual_env then
+--   vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system("which -a python3 | head -n2 | tail -n1"), "\n", "", "g")
+--   vim.g.python_host_prog = vim.fn.substitute(vim.fn.system("which -a python | head -n2 | tail -n1"), "\n", "", "g")
+-- else
+--   vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system("which python3"), "\n", "", "g")
+--   vim.g.python_host_prog = vim.fn.substitute(vim.fn.system("which python"), "\n", "", "g")
+-- end
+-- vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system "which python3", "\n", "", "g")
+-- vim.g.python_host_prog = vim.fn.substitute(vim.fn.system "which python", "\n", "", "g")
