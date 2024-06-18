@@ -125,7 +125,7 @@ function M.config()
           luasnip = "",
           buffer = "",
           path = "",
-          emoji = "",
+          -- emoji = "",
         })[entry.source.name]
 
         if entry.source.name == "emoji" then
@@ -150,7 +150,7 @@ function M.config()
       { name = "buffer" },
       { name = "path" },
       { name = "calc" },
-      { name = "emoji" },
+      -- { name = "emoji" },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,

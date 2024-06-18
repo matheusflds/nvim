@@ -17,6 +17,9 @@ function M.config()
       formatting.stylua,
       formatting.prettier,
       formatting.black,
+      formatting.cljfmt,
+      formatting.clang_format,
+      -- formatting.joker,
       -- formatting.prettier.with {
       --   extra_filetypes = { "toml" },
       --   -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
@@ -28,5 +31,7 @@ function M.config()
     },
   }
 end
+
+-- TODO: Auto format on save
 
 return M

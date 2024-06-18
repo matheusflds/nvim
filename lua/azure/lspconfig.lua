@@ -79,6 +79,8 @@ function M.config()
     "terraformls",
     "astro",
     "prismals",
+    "clojure_lsp",
+    "clangd",
   }
 
   local default_diagnostic_config = {

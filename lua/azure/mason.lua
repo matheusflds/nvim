@@ -17,6 +17,8 @@ function M.config()
     "jsonls",
     -- "gopls",
     "eslint",
+    "clojure_lsp",
+    "clangd",
   }
 
   require("mason").setup {

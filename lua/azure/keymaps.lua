@@ -39,8 +39,8 @@ keymap({ "n", "o", "x" }, "<s-h>", "^", opts)
 keymap({ "n", "o", "x" }, "<s-l>", "g_", opts)
 
 -- tailwind bearable to work with
-keymap({ "n", "x" }, "j", "gj", opts)
-keymap({ "n", "x" }, "k", "gk", opts)
+-- keymap({ "n", "x" }, "j", "gj", opts)
+-- keymap({ "n", "x" }, "k", "gk", opts)
 -- keymap("n", "<leader>cw", ":lua vim.wo.wrap = not vim.wo.wrap<CR>", opts)
 
 

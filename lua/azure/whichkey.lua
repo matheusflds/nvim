@@ -8,6 +8,11 @@ function M.config()
     h = { "<cmd>nohlsearch<CR>", "NOHL" },
     b = { name = "Buffers" },
     c = { name = "Code" },
+    d = {
+      name = "Debugger",
+      b = { "<cmd>DapToggleBreakpoint<CR>", "Toggle Breakpoint" },
+      r = { "<cmd>DapContinue<CR>", "Start/Resume" },
+    },
     f = { name = "Find" },
     p = { name = "Project" },
     g = { name = "Git" },
