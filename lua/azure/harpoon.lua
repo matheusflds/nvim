@@ -21,11 +21,11 @@ function M.config()
   -- keymap("n", "<leader>ba", function() harpoon:list():add() end)
   -- keymap("n", "<leader>bm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-  wk.register {
-    ["<leader>ba"] = { "<cmd>lua require('harpoon'):list():add()<cr>", "Harpoon Add" },
-    ["<leader>bl"] = { "<cmd>lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>", "Harpoon List" },
-    ["<leader>bp"] = { "<cmd>lua require('harpoon'):list():prev()<cr>", "Harpoon Prev" },
-    ["<leader>bn"] = { "<cmd>lua require('harpoon'):list():next()<cr>", "Harpoon Next" },
+  wk.add {
+    { "<leader>ba", "<cmd>lua require('harpoon'):list():add()<cr>", desc = "Harpoon Add" },
+    { "<leader>bl", "<cmd>lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>", desc = "Harpoon List" },
+    { "<leader>bn", "<cmd>lua require('harpoon'):list():next()<cr>", desc = "Harpoon Next" },
+    { "<leader>bp", "<cmd>lua require('harpoon'):list():prev()<cr>", desc = "Harpoon Prev" },
   }
 
   -- keymap("n", "<C-h>", function() harpoon:list():select(1) end)

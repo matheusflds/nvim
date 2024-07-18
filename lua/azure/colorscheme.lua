@@ -12,9 +12,9 @@ function M.config()
     ---@field public bg string
 
     ---@param colors ColorScheme
-    on_colors = function (colors)
-      colors.bg = "#0B0B0F"
-    end,
+    -- on_colors = function (colors)
+      -- colors.bg = "#0B0B0F"
+    -- end,
   }
   vim.cmd.colorscheme "tokyonight"
 end

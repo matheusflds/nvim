@@ -6,7 +6,7 @@ local M = {
 
 function M.config()
   require("nvim-treesitter.configs").setup {
-   ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown", "kdl" },
+   ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,

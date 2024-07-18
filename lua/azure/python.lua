@@ -11,5 +11,5 @@
 --   vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system("which python3"), "\n", "", "g")
 --   vim.g.python_host_prog = vim.fn.substitute(vim.fn.system("which python"), "\n", "", "g")
 -- end
--- vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system "which python3", "\n", "", "g")
+vim.g.python3_host_prog = vim.fn.substitute(vim.fn.system "which python3", "\n", "", "g")
 -- vim.g.python_host_prog = vim.fn.substitute(vim.fn.system "which python", "\n", "", "g")

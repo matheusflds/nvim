@@ -13,6 +13,7 @@ function M.config()
     "html",
     "tsserver",
     "pyright",
+    -- "pylsp",
     "bashls",
     "jsonls",
     -- "gopls",

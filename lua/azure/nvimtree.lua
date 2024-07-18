@@ -5,9 +5,9 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.register {
-    ["<leader>op"] = { "<cmd>NvimTreeToggle<CR>", "Project Tree" },
-    ["<leader>oP"] = { "<cmd>NvimTreeFindFile<CR>", "Find file in Tree" },
+  wk.add {
+    { "<leader>oP", "<cmd>NvimTreeFindFile<CR>", desc = "Find file in Tree" },
+    { "<leader>op", "<cmd>NvimTreeToggle<CR>", desc = "Project Tree" },
   }
 
   local icons = require "azure.icons"

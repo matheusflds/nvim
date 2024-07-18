@@ -1,61 +1,51 @@
 local M = {
   "folke/which-key.nvim",
+  dependencies = { { "echasnovski/mini.icons", version = false } },
 }
 
 function M.config()
   local mappings = {
-    q = { "<cmd>confirm q<CR>", "Quit" },
-    h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    b = { name = "Buffers" },
-    c = { name = "Code" },
-    d = {
-      name = "Debugger",
-      b = { "<cmd>DapToggleBreakpoint<CR>", "Toggle Breakpoint" },
-      r = { "<cmd>DapContinue<CR>", "Start/Resume" },
-    },
-    f = { name = "Find" },
-    p = { name = "Project" },
-    g = { name = "Git" },
-    t = {
-      name = "Tab",
+    { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
+    { "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
 
-      n = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-      N = { "<cmd>tabnew %<cr>", "New Tab" },
-      o = { "<cmd>tabonly<cr>", "Only" },
-      h = { "<cmd>tabprevious<cr>", "Switch to Left Tab" },
-      l = { "<cmd>tabnext<cr>", "Switch to Right tab" },
-      c = { "<cmd>$tabclose<cr>", "Close Tab" },
-    },
-    o = {
-      name = "Open",
+    { "<leader>b", group = "Buffers" },
+    { "<leader>c", group = "Code" },
 
-      T = { "<cmd>tabnew | terminal<CR>", "Open Term" },
-      t = { name = "Toggle Term" },
-    },
-    w = {
-      name = "Window",
+    { "<leader>d", group = "Debugger" },
+    { "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
+    { "<leader>dr", "<cmd>DapContinue<CR>", desc = "Start/Resume" },
 
-      v = { "<cmd>vsplit<CR>", "Vertical Split" },
-      s = { "<cmd>split<CR>", "Horizontal Split" },
-      e = { "<C-w>=", "Balance Windows" },
-      z = { "<cmd>ZenMode<CR>", "Zen Mode" },
+    { "<leader>f", group = "Find" },
+    { "<leader>g", group = "Git" },
+    { "<leader>p", group = "Project" },
 
-      h = { "<C-w>h", "Focus on left windows" },
-      j = { "<C-w>j", "Focus on bottom window" },
-      k = { "<C-w>k", "Focus on top window" },
-      l = { "<C-w>l", "Focus on right window" },
+    { "<leader>t", group = "Tab" },
+    { "<leader>tN", "<cmd>tabnew %<cr>", desc = "New Tab" },
+    { "<leader>tc", "<cmd>$tabclose<cr>", desc = "Close Tab" },
+    { "<leader>th", "<cmd>tabprevious<cr>", desc = "Switch to Left Tab" },
+    { "<leader>tl", "<cmd>tabnext<cr>", desc = "Switch to Right tab" },
+    { "<leader>tn", "<cmd>$tabnew<cr>", desc = "New Empty Tab" },
+    { "<leader>to", "<cmd>tabonly<cr>", desc = "Only" },
 
-      H = { "<C-w>H", "Position window at left" },
-      J = { "<C-w>J", "Position window at bottom" },
-      K = { "<C-w>K", "Position window at top" },
-      L = { "<C-w>L", "Position window at right" },
+    { "<leader>o", group = "Open" },
+    { "<leader>oT", "<cmd>tabnew | terminal<CR>", desc = "Open Term" },
+    { "<leader>ot", group = "Toggle Term" },
 
-      q = { ":close<CR>", "Close current window" },
-      c = { ":close<CR>", "Close current window" },
-
-      o = { ":MaximizerToggle<CR>", "Maximeze current window" },
-    },
-    T = { name = "Treesitter" },
+    { "<leader>w", group = "Window" },
+    { "<leader>wH", "<C-w>H", desc = "Position window at left" },
+    { "<leader>wJ", "<C-w>J", desc = "Position window at bottom" },
+    { "<leader>wK", "<C-w>K", desc = "Position window at top" },
+    { "<leader>wL", "<C-w>L", desc = "Position window at right" },
+    { "<leader>wh", "<C-w>h", desc = "Focus on left windows" },
+    { "<leader>wj", "<C-w>j", desc = "Focus on bottom window" },
+    { "<leader>wk", "<C-w>k", desc = "Focus on top window" },
+    { "<leader>wl", "<C-w>l", desc = "Focus on right window" },
+    { "<leader>wo", ":MaximizerToggle<CR>", desc = "Maximeze current window" },
+    { "<leader>wq", ":close<CR>", desc = "Close current window" },
+    { "<leader>ws", "<cmd>split<CR>", desc = "Horizontal Split" },
+    { "<leader>wv", "<cmd>vsplit<CR>", desc = "Vertical Split" },
+    { "<leader>we", "<C-w>=", desc = "Balance Windows" },
+    { "<leader>wz", "<cmd>ZenMode<CR>", desc = "Zen Mode" },
   }
 
   local which_key = require "which-key"
@@ -77,14 +67,19 @@ function M.config()
         g = false,
       },
     },
-    window = {
+    win = {
+      no_overlap = true,
       border = "rounded",
-      position = "bottom",
+      title = true,
+      title_pos = "center",
       padding = { 2, 2, 2, 2 },
+      zindex = 1000,
     },
-    ignore_missing = true,
+    filter = function(mapping)
+      return true
+    end,
     show_help = false,
-    show_keys = false,
+    show_keys = true,
     disable = {
       buftypes = {},
       filetypes = { "TelescopePrompt" },
@@ -96,7 +91,7 @@ function M.config()
     prefix = "<leader>",
   }
 
-  which_key.register(mappings, opts)
+  which_key.add(mappings, opts)
 end
 
 return M

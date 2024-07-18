@@ -11,14 +11,23 @@ function M.config()
   local formatting = null_ls.builtins.formatting
   local diagnostics =  null_ls.builtins.diagnostics
 
+  local poetry_mypy = vim.fn.system("poetry run which mypy"):gsub("%s+", "")
+
   null_ls.setup {
     debug = false,
     sources = {
       formatting.stylua,
       formatting.prettier,
-      formatting.black,
-      formatting.cljfmt,
+      diagnostics.mypy.with({
+        command = poetry_mypy,
+        extra_args = { "--ignore-missing-imports", "--show-column-numbers" },
+      }),
+      -- diagnostics.mypy,
+      -- formatting.ruff,
+      -- formatting.cljfmt,
       formatting.clang_format,
+      formatting.isort,
+      -- diagnostics.ruff,
       -- formatting.joker,
       -- formatting.prettier.with {
       --   extra_filetypes = { "toml" },

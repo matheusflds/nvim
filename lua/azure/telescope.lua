@@ -26,27 +26,26 @@ end
 
 function M.config()
   local wk = require "which-key"
-  wk.register {
+  wk.add {
     -- Buffers
-    ["<leader>bb"] = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
+    { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find" },
 
     -- Project
-    --["<leader>pf"] = { "<cmd>Telescope find_files<cr>", "Find file" },
-    ["<leader>pf"] = { "<cmd>lua require('azure.telescope').find_files_from_project_git_root()<cr>", "Find file" },
-    ["<leader>pp"] = { "<cmd>Telescope projects<cr>", "Projects" },
-    ["<leader>ps"] = { "<cmd>Telescope live_grep<cr>", "Search for text" },
-    ["<leader>pc"] = { "<cmd>Telescope grep_string<cr>", "Search using current cursor" },
-    ["<leader>pl"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "List" },
+    { "<leader>pc", "<cmd>Telescope grep_string<cr>", desc = "Search using current cursor" },
+    { "<leader>pf", "<cmd>lua require('azure.telescope').find_files_from_project_git_root()<cr>", desc = "Find file" },
+    { "<leader>pl", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", desc = "List" },
+    { "<leader>pp", "<cmd>Telescope projects<cr>", desc = "Projects" },
+    { "<leader>ps", "<cmd>Telescope live_grep<cr>", desc = "Search for text" },
 
     -- Git
-    ["<leader>gb"] = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    ["<leader>gs"] = { "<cmd>Telescope git_status<cr>", "Checkout branch" },
+    { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+    { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Checkout branch" },
 
     -- Find Stuff
-    ["<leader>fc"] = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-    ["<leader>fh"] = { "<cmd>Telescope help_tags<cr>", "Help" },
-    ["<leader>fl"] = { "<cmd>Telescope resume<cr>", "Last Search" },
-    ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
+    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
   }
 
   local icons = require "azure.icons"

@@ -40,25 +40,19 @@ end
 
 function M.config()
   local wk = require "which-key"
-  wk.register {
-    ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    ["<leader>cf"] = {
-      "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>",
-      "Format",
-    },
-    ["<leader>ci"] = { "<cmd>LspInfo<cr>", "Info" },
-    ["<leader>cj"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
-    ["<leader>ck"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
-    -- ["<leader>cl"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    ["<leader>cq"] = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-    ["<leader>cr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+  wk.add {
+    { "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+    { "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true, filter = function(client) return client.name ~= 'typescript-tools' end})<cr>", desc = "Format" },
+    { "<leader>ci", "<cmd>LspInfo<cr>", desc = "Info" },
+    { "<leader>cj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
+    { "<leader>ck", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
+    { "<leader>cq", "<cmd>lua vim.diagnostic.setloclist()<cr>", desc = "Quickfix" },
+    { "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
   }
 
-  wk.register {
-    ["<leader>la"] = {
-      name = "LSP",
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
-    },
+  wk.add {
+    { "<leader>la", group = "LSP" },
+    { "<leader>laa", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "v" },
   }
 
   local lspconfig = require "lspconfig"
@@ -72,6 +66,7 @@ function M.config()
     "eslint",
     "tsserver",
     "pyright",
+    -- "pylsp",
     "bashls",
     "jsonls",
     "yamlls",
@@ -81,6 +76,7 @@ function M.config()
     "prismals",
     "clojure_lsp",
     "clangd",
+    "ruff_lsp",
   }
 
   local default_diagnostic_config = {
@@ -138,6 +134,52 @@ function M.config()
         lineFoldingOnly = true,
       }
     end
+
+    -- if server == "pyright" then
+    --   opts.settings = {
+    --     pyright = {
+    --       disableOrganizeImports = true, -- Using Ruff
+    --     },
+    --     python = {
+    --       analysis = {
+    --         ignore = { "*" }, -- Using Ruff
+    --         typeCheckingMode = "off", -- Using mypy
+    --       },
+    --     },
+    --   }
+    -- end
+    -- if server == "pylsp" then
+    --   local poetry_python_path = vim.fn.system("poetry env info --path"):gsub("%s+", "") .. "/bin/python"
+    --   -- local util = require "lspconfig/util"
+    --
+    --   -- opts.root_dir = util.find_git_ancestor or util.path.dirname
+    --   opts.cmd = { poetry_python_path, "-m", "pylsp" }
+    --   opts.settings = {
+    --     pylsp = {
+    --       configurationSources = { "pylint" },
+    --       plugins = {
+    --         -- formatter options
+    --         black = { enabled = false },
+    --         autopep8 = { enabled = false },
+    --         yapf = { enabled = false },
+    --         -- linter options
+    --         mccabe = { enabled = false },
+    --         ruff = { enabled = true },
+    --         pylint = { enabled = true, executable = "pylint" },
+    --         pyflakes = { enabled = false },
+    --         pycodestyle = { enabled = false },
+    --         -- type checker
+    --         pylsp_mypy = { enabled = true },
+    --         -- auto-completion options
+    --         -- jedi_completion = { fuzzy = true },
+    --         -- rope_completion = { enabled = true },
+    --
+    --         -- import sorting
+    --         pyls_isort = { enabled = true },
+    --       },
+    --     },
+    --   }
+    -- end
 
     lspconfig[server].setup(opts)
   end
