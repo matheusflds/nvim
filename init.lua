@@ -4,7 +4,7 @@ require "azure.keymaps"
 require "azure.autocmds"
 require "azure.python"
 
-spec "azure.colorschemes.darkplus"
+-- spec "azure.colorschemes.darkplus"
 
 spec "azure.colorscheme"
 spec "azure.devicons"
@@ -33,6 +33,7 @@ spec "azure.alpha"
 -- spec "azure.indentline"
 spec "azure.toggleterm"
 spec "azure.nvim-dap"
+spec "azure.iron"
 
 spec "azure.extras.copilot"
 spec "azure.extras.tabby"

@@ -42,6 +42,7 @@ function M.config()
     { "<leader>wl", "<C-w>l", desc = "Focus on right window" },
     { "<leader>wo", ":MaximizerToggle<CR>", desc = "Maximeze current window" },
     { "<leader>wq", ":close<CR>", desc = "Close current window" },
+    { "<leader>wx", ":close<CR>", desc = "Close current window" },
     { "<leader>ws", "<cmd>split<CR>", desc = "Horizontal Split" },
     { "<leader>wv", "<cmd>vsplit<CR>", desc = "Vertical Split" },
     { "<leader>we", "<C-w>=", desc = "Balance Windows" },
