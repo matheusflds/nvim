@@ -75,7 +75,8 @@ function M.config()
     "prismals",
     "clojure_lsp",
     "clangd",
-    "ruff_lsp",
+    "ruff",
+    "qmlls"
   }
 
   local default_diagnostic_config = {
@@ -104,10 +105,6 @@ function M.config()
 
   vim.diagnostic.config(default_diagnostic_config)
 
-  for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-  end
-
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
   require("lspconfig.ui.windows").default_options.border = "rounded"
@@ -132,6 +129,10 @@ function M.config()
         dynamicRegistration = false,
         lineFoldingOnly = true,
       }
+    end
+
+    if server == "qmlls" then
+      opts.cmd = {"qmlls", "-E"}
     end
 
     -- if server == "pyright" then

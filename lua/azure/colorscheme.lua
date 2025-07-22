@@ -14,10 +14,10 @@ function M.config()
 
     ---@param colors ColorScheme
     on_colors = function (colors)
-      -- colors.bg = "#11121d"
+      colors.bg = "#16161e"
     end,
   }
-  vim.cmd.colorscheme "tokyonight"
+  vim.cmd.colorscheme "tokyonight-night"
   -- vim.cmd.colorscheme "kanagawa-dragon"
   -- require("catppuccin").setup {
   --   color_overrides = {
